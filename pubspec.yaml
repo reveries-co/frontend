@@ -1,5 +1,5 @@
-name: wayfarer
-description: Linkedin Flutter Course
+name: reveries_app
+description: navigation system for thinking
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -47,7 +47,9 @@ flutter:
   assets:
      - img/
      - img/icons/
-  #   - images/a_dot_ham.jpeg
+     - img/mesh_logo_nobg.png
+
+  #img   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

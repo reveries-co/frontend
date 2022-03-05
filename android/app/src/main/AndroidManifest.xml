@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wayfarer">
+    package="com.example.reveries-app">
    <application
-        android:label="wayfarer"
+        android:label="reveries-app"
         android:icon="@mipmap/rev_launcher">
         <activity
             android:name=".MainActivity"
