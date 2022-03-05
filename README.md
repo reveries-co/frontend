@@ -2,8 +2,6 @@
 
 ## Intro 
 
-Yep Pedro, all running on my laptop. 
-
 In January 2018, I had the chance to go to Davos to attend the World Economic Forum. I was there the previous year, so I knew what I was in for: a ton of though-provoking discussions, new trends and late night conversations about our societies current challenges. In one of the sessions I was in, the topic was the Future of Work. I can't think of a session where I paid more attention, I don't think my mind drifted one single second. I left the session, and entrusted my notes to carry those lessons for eternity. Here are the actual notes:
 
 >What we need are social trampolines not social safety nets. Stephane Kasriel, upwork
