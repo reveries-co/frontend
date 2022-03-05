@@ -1,0 +1,4 @@
+#Sat Mar 05 17:28:46 WET 2022
+base.0=/home/daniel/StudioProjects/wayfarer/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

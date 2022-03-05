@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/mipmap-xxhdpi_rev_launcher.png.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/mipmap-xxhdpi/rev_launcher.png"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/mipmap-xhdpi_rev_launcher.png.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/mipmap-xhdpi/rev_launcher.png"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_rev_launcher.png.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/mipmap-xxxhdpi/rev_launcher.png"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/drawable-v21_launch_background.xml.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/mipmap-mdpi_rev_launcher.png.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/mipmap-mdpi/rev_launcher.png"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/mipmap-hdpi_rev_launcher.png.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/mipmap-hdpi/rev_launcher.png"
+    },
+    {
+        "merged": "/home/daniel/StudioProjects/wayfarer/build/app/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
+        "source": "/home/daniel/StudioProjects/wayfarer/android/app/src/main/res/drawable/launch_background.xml"
+    }
+]
