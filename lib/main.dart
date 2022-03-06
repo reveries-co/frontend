@@ -65,10 +65,10 @@ class MyApp extends StatelessWidget {
                               blurRadius: 16.0,
                               spreadRadius: 5.0,
                             ),
-                          ]
-                      ),
+                          ]),
                       padding: EdgeInsets.all(10.0),
-                      margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 25.0),
+                      margin: EdgeInsets.symmetric(
+                          vertical: 30.0, horizontal: 25.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -98,7 +98,6 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
               ),
-            )
-        ));
+            )));
   }
 }
