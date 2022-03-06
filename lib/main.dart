@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Color(0xFFf3f2fa),
-          appBar: AppBar(
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                backgroundImage: AssetImage('img/daniel.png'),
-              ),
-            ),
-            actions: [
-              Padding(
+            backgroundColor: Color(0xFFf3f2fa),
+            appBar: AppBar(
+              leading: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  onPressed: () {},
-                  color: Color(0xFF3E424B),
-                  icon: const Icon(Icons.search),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('img/daniel.png'),
                 ),
-              )
-            ],
-            title: Center(
-              child: Image(
-                  image: AssetImage('img/mesh_logo_nobg.png'),
-                height: 20,
               ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    onPressed: () {},
+                    color: Color(0xFF3E424B),
+                    icon: const Icon(Icons.search),
+                  ),
+                )
+              ],
+              title: Center(
+                child: Image(
+                  image: AssetImage('img/mesh_logo_nobg.png'),
+                  height: 20,
+                ),
+              ),
+              backgroundColor: Color(0xFFF0F3F8),
             ),
-            backgroundColor: Color(0xFFF0F3F8),
-          ),
-          body: Center(
+            body: Center(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 30.0),
                 child: Column(
@@ -46,19 +53,19 @@ void main() {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.08),
-                            offset: const Offset(
-                              0.0,
-                              4.0,
-                             ),
-                            blurRadius: 16.0,
-                            spreadRadius: 5.0,
-                          ),
-                        ]
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.08),
+                              offset: const Offset(
+                                0.0,
+                                4.0,
+                              ),
+                              blurRadius: 16.0,
+                              spreadRadius: 5.0,
+                            ),
+                          ]
                       ),
                       padding: EdgeInsets.all(10.0),
                       margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 25.0),
@@ -91,7 +98,7 @@ void main() {
                   ],
                 ),
               ),
-          )
-        )),
-  );
+            )
+        ));
+  }
 }
