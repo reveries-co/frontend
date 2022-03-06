@@ -1,4 +1,4 @@
-package com.example.reveries-app
+package com.example.reveries_app
 
 import io.flutter.embedding.android.FlutterActivity
 
