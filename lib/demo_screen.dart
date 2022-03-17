@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'google_signin.dart';
 
 class DemoScreen extends StatelessWidget {
@@ -76,18 +75,38 @@ class DemoScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: Text(
-                          ' #14 Liquid Modernity',
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            height: 1.2,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 22.0,
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child:
+                          Padding(
+                            padding: const EdgeInsets.all(1.0),
+                            child: Text(
+                              ' #14 Liquid Modernity',
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                height: 1.2,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.0,
+                              ),
+                            ),
                           ),
-                        ),
                       ),
+                  Container(
+                          alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Text(
+                                '1 day ago',
+                                style: TextStyle(
+                                  fontFamily: 'Rubik',
+                                  height: 0.5,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 12.0,
+                                  color: Color(0xFF979797),
+                                ),
+                              ),
+                            ),
+                          ),
                       Padding(
                         padding: EdgeInsets.only(left:20, bottom: 20, right: 20, top:10),
                         child: Text(
@@ -100,8 +119,25 @@ class DemoScreen extends StatelessWidget {
                             color: Color(0xFF979797),
                           ),
                         ),
-                      )
-                    ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Icon(
+                            Icons.account_tree_rounded,
+                          color: Color(0xFFE35D47),
+                            size: 15.0,
+                        ),
+                          Text("  12, 3",
+                            style: TextStyle(
+                            fontFamily: 'Rubik',
+                            height: 1.2,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.0,
+                          ),)
+                      ],
+                       ),
+                    ]
                   ),
                 ),
               ],
