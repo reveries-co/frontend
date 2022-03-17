@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'google_signin.dart';
+import 'custom_icons.dart';
 
 class DemoScreen extends StatelessWidget {
   const DemoScreen({Key? key}) : super(key: key);
@@ -143,6 +144,24 @@ class DemoScreen extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // this will be set when a new tab is tapped
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(RevCustomIcons.you),
+            label: 'You',
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(RevCustomIcons.fleeting),
+            label: 'Fleeting',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(RevCustomIcons.permanent),
+            label: 'Permanent',
+          ),
+        ],
+      ),
+    );
   }
 }

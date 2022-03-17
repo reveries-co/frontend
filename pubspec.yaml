@@ -65,4 +65,7 @@ flutter:
         - asset: fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf
         - asset: fonts/Source_Serif_Pro/SourceSerifPro-Bold.ttf
           weight: 700
+    - family: RevCustomIcons
+      fonts:
+        - asset: fonts/customicons.ttf
 
