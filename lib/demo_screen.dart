@@ -12,8 +12,16 @@ class DemoScreen extends StatelessWidget {
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('img/daniel.png'),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInDemo()),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('img/daniel.png'),
+              ),
             ),
           ),
           actions: [
@@ -39,15 +47,6 @@ class DemoScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               children: [
-                ElevatedButton(
-                  child: const Text('Sign In'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignInDemo()),
-                    );
-                  },
-                ),
                 Text(
                   'Permanent Notes',
                   style: TextStyle(
@@ -72,29 +71,34 @@ class DemoScreen extends StatelessWidget {
                         ),
                       ]),
                   padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(
-                      vertical: 30.0, horizontal: 25.0),
+                  margin:
+                  EdgeInsets.symmetric(vertical: 30.0, horizontal: 25.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(1.0),
                         child: Text(
-                          '#14 Liquid Modernity',
+                          ' #14 Liquid Modernity',
                           style: TextStyle(
                             fontFamily: 'Rubik',
-                            height: 5,
+                            height: 1.2,
                             fontWeight: FontWeight.w600,
-                            fontSize: 20.0,
+                            fontSize: 22.0,
                           ),
                         ),
                       ),
-                      Text(
-                        'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',
-                        style: TextStyle(
-                          fontFamily: 'Rubik',
-                          height: 5,
-                          fontSize: 10.0,
+                      Padding(
+                        padding: EdgeInsets.only(left:20, bottom: 20, right: 20, top:10),
+                        child: Text(
+                          'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            height: 2,
+                            fontSize: 12.0,
+                            fontStyle: FontStyle.italic,
+                            color: Color(0xFF979797),
+                          ),
                         ),
                       )
                     ],
