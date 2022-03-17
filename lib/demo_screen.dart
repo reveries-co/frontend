@@ -12,8 +12,16 @@ class DemoScreen extends StatelessWidget {
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('img/daniel.png'),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInDemo()),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('img/daniel.png'),
+              ),
             ),
           ),
           actions: [
@@ -39,15 +47,6 @@ class DemoScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               children: [
-                ElevatedButton(
-                  child: const Text('Sign In'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignInDemo()),
-                    );
-                  },
-                ),
                 Text(
                   'Permanent Notes',
                   style: TextStyle(
