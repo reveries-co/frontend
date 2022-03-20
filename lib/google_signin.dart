@@ -1,71 +1,60 @@
 import 'dart:async';
 import 'dart:convert' show json;
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
+import 'package:reveries_app/services/auth_service.dart';
+import 'models/user.dart' as models;
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>[
     'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
   ],
 );
 
-class SignInDemo extends StatefulWidget {
+class GoogleSignInDemo extends StatefulWidget {
   @override
-  State createState() => SignInDemoState();
+  State createState() => GoogleSignInDemoState();
 }
 
-class SignInDemoState extends State<SignInDemo> {
-  GoogleSignInAccount? _currentUser;
-  String _contactText = '';
+class GoogleSignInDemoState extends State<GoogleSignInDemo> {
+  models.User? _currentUser;
 
   @override
   void initState() {
     super.initState();
-    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
-      setState(() {
-        _currentUser = account;
-      });
-    });
-    _googleSignIn.signInSilently();
   }
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
+    this._currentUser = authService.user;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Google Sign In'),
         ),
         body: ConstrainedBox(
           constraints: const BoxConstraints.expand(),
-          child: _buildBody(),
+          child: _buildBody(context),
         ));
   }
 
-  Widget _buildBody() {
-    final GoogleSignInAccount? user = _currentUser;
+  Widget _buildBody(BuildContext context) {
+    final models.User? user = _currentUser;
+    var email = "";
+    if (user != null) {
+      email = user.email;
+    }
     if (user != null) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          ListTile(
-            leading: GoogleUserCircleAvatar(
-              identity: user,
-            ),
-            title: Text(user.displayName ?? ''),
-            subtitle: Text(user.email),
-          ),
-          const Text('Signed in successfully.'),
-          Text(_contactText),
+          Text('Signed in successfully. ${email}'),
           ElevatedButton(
             child: const Text('SIGN OUT'),
             onPressed: _handleSignOut,
-          ),
-          ElevatedButton(
-            child: const Text('REFRESH'),
-            onPressed: () => _handleGetContact(user),
           ),
         ],
       );
@@ -76,66 +65,25 @@ class SignInDemoState extends State<SignInDemo> {
           const Text('You are not currently signed in.'),
           ElevatedButton(
             child: const Text('SIGN IN'),
-            onPressed: _handleSignIn,
+            onPressed: _handleSignIn(context),
           ),
         ],
       );
     }
   }
 
-  Future<void> _handleSignIn() async {
-    try {
-      await _googleSignIn.signIn();
-    } catch (error) {
-      print(error);
-    }
-  }
-
-  Future<void> _handleGetContact(GoogleSignInAccount user) async {
-    setState(() {
-      _contactText = 'Loading contact info...';
-    });
-    final http.Response response = await http.get(
-      Uri.parse('https://people.googleapis.com/v1/people/me/connections'
-          '?requestMask.includeField=person.names'),
-      headers: await user.authHeaders,
-    );
-    if (response.statusCode != 200) {
-      setState(() {
-        _contactText = 'People API gave a ${response.statusCode} '
-            'response. Check logs for details.';
-      });
-      print('People API ${response.statusCode} response: ${response.body}');
-      return;
-    }
-    final Map<String, dynamic> data =
-        json.decode(response.body) as Map<String, dynamic>;
-    final String? namedContact = _pickFirstNamedContact(data);
-    setState(() {
-      if (namedContact != null) {
-        _contactText = 'I see you know $namedContact!';
-      } else {
-        _contactText = 'No contacts to display.';
+  VoidCallback _handleSignIn(context) {
+    return () async {
+      try {
+        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+        if (googleUser != null) {
+          final authService = Provider.of<AuthService>(context, listen: false);
+          authService.authenticateWithGoogle(googleUser);
+        }
+      } catch (error) {
+        print(error);
       }
-    });
-  }
-
-  String? _pickFirstNamedContact(Map<String, dynamic> data) {
-    final List<dynamic>? connections = data['connections'] as List<dynamic>?;
-    final Map<String, dynamic>? contact = connections?.firstWhere(
-      (dynamic contact) => contact['names'] != null,
-      orElse: () => null,
-    ) as Map<String, dynamic>?;
-    if (contact != null) {
-      final Map<String, dynamic>? name = contact['names'].firstWhere(
-        (dynamic name) => name['displayName'] != null,
-        orElse: () => null,
-      ) as Map<String, dynamic>?;
-      if (name != null) {
-        return name['displayName'] as String?;
-      }
-    }
-    return null;
+    };
   }
 
   Future<void> _handleSignOut() => _googleSignIn.disconnect();
