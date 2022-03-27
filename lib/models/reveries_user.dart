@@ -1,9 +1,9 @@
-class User {
+class ReveriesUser {
   var uid = "";
   var email = "";
   var username = "";
 
-  User(uid, email) {
+  ReveriesUser(uid, email) {
     this.uid = uid;
     this.email = email;
   }
