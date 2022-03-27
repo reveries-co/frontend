@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'google_signin.dart';
+import 'custom_icons.dart';
 
 class DemoScreen extends StatelessWidget {
   const DemoScreen({Key? key}) : super(key: key);
@@ -12,8 +12,16 @@ class DemoScreen extends StatelessWidget {
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('img/daniel.png'),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInDemo()),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('img/daniel.png'),
+              ),
             ),
           ),
           actions: [
@@ -39,15 +47,6 @@ class DemoScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               children: [
-                ElevatedButton(
-                  child: const Text('Sign In'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignInDemo()),
-                    );
-                  },
-                ),
                 Text(
                   'Permanent Notes',
                   style: TextStyle(
@@ -72,37 +71,97 @@ class DemoScreen extends StatelessWidget {
                         ),
                       ]),
                   padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(
-                      vertical: 30.0, horizontal: 25.0),
+                  margin:
+                  EdgeInsets.symmetric(vertical: 30.0, horizontal: 25.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child:
+                          Padding(
+                            padding: const EdgeInsets.all(1.0),
+                            child: Text(
+                              ' #14 Liquid Modernity',
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                height: 1.2,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.0,
+                              ),
+                            ),
+                          ),
+                      ),
+                  Container(
+                          alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Text(
+                                '1 day ago',
+                                style: TextStyle(
+                                  fontFamily: 'Rubik',
+                                  height: 0.5,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 12.0,
+                                  color: Color(0xFF979797),
+                                ),
+                              ),
+                            ),
+                          ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(left:20, bottom: 20, right: 20, top:10),
                         child: Text(
-                          '#14 Liquid Modernity',
+                          'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',
                           style: TextStyle(
                             fontFamily: 'Rubik',
-                            height: 5,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20.0,
+                            height: 2,
+                            fontSize: 12.0,
+                            fontStyle: FontStyle.italic,
+                            color: Color(0xFF979797),
                           ),
                         ),
                       ),
-                      Text(
-                        'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',
-                        style: TextStyle(
-                          fontFamily: 'Rubik',
-                          height: 5,
-                          fontSize: 10.0,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Icon(
+                            Icons.account_tree_rounded,
+                          color: Color(0xFFE35D47),
+                            size: 15.0,
                         ),
-                      )
-                    ],
+                          Text("  12, 3",
+                            style: TextStyle(
+                            fontFamily: 'Rubik',
+                            height: 1.2,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.0,
+                          ),)
+                      ],
+                       ),
+                    ]
                   ),
                 ),
               ],
             ),
           ),
-        ));
+        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // this will be set when a new tab is tapped
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(RevCustomIcons.you),
+            label: 'You',
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(RevCustomIcons.fleeting),
+            label: 'Fleeting',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(RevCustomIcons.permanent),
+            label: 'Permanent',
+          ),
+        ],
+      ),
+    );
   }
 }
