@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reveries_app/components/reveries_bottom_tabs.dart';
 
 import '../custom_icons.dart';
 import '../google_signin.dart';
@@ -146,23 +147,7 @@ class DemoScreen extends StatelessWidget {
             ),
           ),
         ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(RevCustomIcons.you),
-            label: 'You',
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(RevCustomIcons.fleeting),
-            label: 'Fleeting',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(RevCustomIcons.permanent),
-            label: 'Permanent',
-          ),
-        ],
-      ),
+      bottomNavigationBar: ReveriesBottomTabs()
     );
   }
 }
