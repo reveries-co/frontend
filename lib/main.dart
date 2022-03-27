@@ -1,8 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:reveries_app/demo_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:reveries_app/google_signin.dart';
+import 'package:reveries_app/screens/demo.dart';
+import 'package:reveries_app/services/auth_service.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MultiProvider(
+    providers: [
+      Provider<AuthService>(create: (_) => AuthService())
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,8 +26,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const DemoScreen()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => DemoScreen(),
+        '/login': (context) => GoogleSignInDemo()
+      },
+      debugShowCheckedModeBanner: true,
     );
   }
 }

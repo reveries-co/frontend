@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'google_signin.dart';
-import 'custom_icons.dart';
+
+import '../custom_icons.dart';
+import '../google_signin.dart';
 
 class DemoScreen extends StatelessWidget {
   const DemoScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class DemoScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignInDemo()),
+                  MaterialPageRoute(builder: (context) => GoogleSignInDemo()),
                 );
               },
               child: CircleAvatar(
