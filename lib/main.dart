@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reveries_app/google_signin.dart';
 import 'package:reveries_app/screens/demo.dart';
-import 'package:reveries_app/services/auth_service.dart';
+import 'package:reveries_app/screens/login.dart';
 
+import 'blocs/auth_block.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -14,7 +14,7 @@ void main() async {
   );
   runApp(MultiProvider(
     providers: [
-      Provider<AuthService>(create: (_) => AuthService())
+      Provider<AuthBloc>(create: (_) => AuthBloc())
     ],
     child: MyApp(),
   ));
@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => DemoScreen(),
-        '/login': (context) => GoogleSignInDemo()
+        DemoScreen.routeName: (context) => DemoScreen(),
+        LoginScreen.routeName: (context) => LoginScreen()
       },
       debugShowCheckedModeBanner: true,
     );
