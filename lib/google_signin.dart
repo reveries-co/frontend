@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'dart:convert' show json;
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:reveries_app/services/auth_service.dart';
+
 import 'models/user.dart' as models;
 
 GoogleSignIn _googleSignIn = GoogleSignIn(

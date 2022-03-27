@@ -6,3 +6,4 @@ build/
 .flutter-plugins-dependencies
 android/app/google-services.json
 lib/firebase_options.dart
+generated_plugin_registrant.dart
