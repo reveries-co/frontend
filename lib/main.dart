@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:reveries_app/screens/add_fleeting_note.dart';
 import 'package:reveries_app/screens/demo.dart';
 import 'package:reveries_app/screens/login.dart';
 
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         DemoScreen.routeName: (context) => DemoScreen(),
-        LoginScreen.routeName: (context) => LoginScreen()
+        LoginScreen.routeName: (context) => LoginScreen(),
+        AddFleetingNoteScreen.routeName: (context) => AddFleetingNoteScreen(),
       },
       debugShowCheckedModeBanner: true,
     );

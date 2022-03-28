@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reveries_app/components/reveries_bottom_tabs.dart';
+import 'package:reveries_app/widgets/reveries_app_bar.dart';
 
 import '../blocs/auth_block.dart';
+import '../widgets/reveries_bottom_tabs.dart';
 import 'login.dart';
 
 class DemoScreen extends StatefulWidget {
@@ -47,37 +48,7 @@ class _DemoScreenState extends State<DemoScreen> {
 
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
-              appBar: AppBar(
-                leading: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                      onTap: () {
-                        authBloc.logout();
-                      },
-                      child: FadeInImage(
-                          image: NetworkImage(user.photoURL!),
-                          placeholder: AssetImage('img/daniel.png')
-                      )
-                  ),
-                ),
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                      onPressed: () {},
-                      color: Color(0xFF3E424B),
-                      icon: const Icon(Icons.search),
-                    ),
-                  )
-                ],
-                title: Center(
-                  child: Image(
-                    image: AssetImage('img/mesh_logo_nobg.png'),
-                    height: 20,
-                  ),
-                ),
-                backgroundColor: Color(0xFFF0F3F8),
-              ),
+              appBar: ReveriesAppBar.getReveriesAppBar(context, user),
               body: Center(
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 30.0),
