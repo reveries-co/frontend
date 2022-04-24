@@ -7,6 +7,9 @@ class ReveriesBottomTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: 0, // this will be set when a new tab is tapped
+      onTap: (int index) {
+
+      },
       items: [
         BottomNavigationBarItem(
           icon: new Icon(RevCustomIcons.you),
@@ -23,5 +26,4 @@ class ReveriesBottomTabs extends StatelessWidget {
       ],
     );
   }
-
 }
