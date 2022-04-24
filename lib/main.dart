@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:reveries_app/screens/add_fleeting_note.dart';
 import 'package:reveries_app/screens/demo.dart';
 import 'package:reveries_app/screens/login.dart';
+import 'package:reveries_app/screens/logout.dart';
 
 import 'blocs/auth_block.dart';
 import 'firebase_options.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         DemoScreen.routeName: (context) => DemoScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         AddFleetingNoteScreen.routeName: (context) => AddFleetingNoteScreen(),
+        LogoutScreen.routeName: (context) => LogoutScreen(),
       },
       debugShowCheckedModeBanner: true,
     );
