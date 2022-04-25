@@ -51,8 +51,9 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
           // everything is set up let's generate a UUID for this fleeting note
           var uuid = Uuid();
           String uid = uuid.v1();
-          DatabaseReference database =
-              FirebaseDatabase.instance.ref("fleeting/$uid");
+          DatabaseReference database = FirebaseDatabase.instance.ref(
+              "fleeting/$uid"
+          );
 
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
@@ -103,6 +104,8 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                               await database.set({
                                 "title": _formKey.currentState!.value["title"],
                                 "body": _formKey.currentState!.value["body"],
+                                "created_at":
+                                DateTime.now().millisecondsSinceEpoch,
                                 "user": user.uid
                               });
                             }
