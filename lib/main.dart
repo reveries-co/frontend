@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reveries_app/screens/add_fleeting_note.dart';
 import 'package:reveries_app/screens/demo.dart';
+import 'package:reveries_app/screens/list_fleeting_notes.dart';
 import 'package:reveries_app/screens/login.dart';
 import 'package:reveries_app/screens/logout.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         DemoScreen.routeName: (context) => DemoScreen(),
+        ListFleetingNotesScreen.routeName: (context) => ListFleetingNotesScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         AddFleetingNoteScreen.routeName: (context) => AddFleetingNoteScreen(),
         LogoutScreen.routeName: (context) => LogoutScreen(),
