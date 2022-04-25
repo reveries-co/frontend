@@ -8,7 +8,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 import 'package:reveries_app/widgets/reveries_app_bar.dart';
 import 'package:uuid/uuid.dart';
-
 import '../blocs/auth_block.dart';
 import 'login.dart';
 
@@ -52,7 +51,6 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
           String uid = uuid.v1();
           DatabaseReference database =
               FirebaseDatabase.instance.ref("${user.uid}/fleeting/$uid");
-
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
               appBar: ReveriesAppBar.getReveriesAppBar(context, user),
@@ -60,16 +58,31 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                 child: FormBuilder(
                   key: _formKey,
                   child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 16),
                     margin: EdgeInsets.symmetric(vertical: 30.0),
                     child: Column(
                       children: [
                         FormBuilderTextField(
+                            textAlign: TextAlign.center,
                             name: 'title',
                             decoration: new InputDecoration.collapsed(
-                                hintText: 'Title...'),
+                              hintText: 'Title...',
+                              hintStyle: TextStyle(
+                                fontSize: 22.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Source Serif Pro',
+                              ),
+                            ),
                             validator: FormBuilderValidators.compose(
                                 [FormBuilderValidators.required(context)])),
                         Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          constraints: BoxConstraints(
+                              minHeight: 150,
+                              maxHeight: 600),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Colors.white,
@@ -84,14 +97,19 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                                   spreadRadius: 5.0,
                                 ),
                               ]),
-                          padding: EdgeInsets.all(10.0),
                           margin: EdgeInsets.symmetric(
                               vertical: 30.0, horizontal: 25.0),
                           child: FormBuilderTextField(
                             name: 'body',
                             decoration: new InputDecoration.collapsed(
-                                hintText:
-                                    'What made this Reverie interesting?'),
+                                hintText: '''
+                                    What made this Reverie interesting?''',
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Color(0xFFD6D6D6),
+                                  fontStyle: FontStyle.italic,
+                                  fontFamily: 'Source Serif Pro',
+                                )),
                             validator: FormBuilderValidators.compose(
                                 [FormBuilderValidators.required(context)]),
                           ),
@@ -103,7 +121,8 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                                 "title": _formKey.currentState!.value["title"],
                                 "body": _formKey.currentState!.value["body"],
                                 "created_at":
-                                    DateTime.now().millisecondsSinceEpoch
+                                    DateTime.now().millisecondsSinceEpoch,
+                                "user": user.uid
                               });
                             }
                           },
