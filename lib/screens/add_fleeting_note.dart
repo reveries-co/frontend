@@ -88,6 +88,8 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                             await database.set({
                               "title": _formKey.currentState!.value["title"],
                               "body": _formKey.currentState!.value["body"],
+                              "created_at":
+                                DateTime.now().millisecondsSinceEpoch,
                               "user": user.uid
                             });
                           }
