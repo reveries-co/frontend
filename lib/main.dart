@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         DemoScreen.routeName: (context) => DemoScreen(),
@@ -36,7 +37,6 @@ class MyApp extends StatelessWidget {
         AddFleetingNoteScreen.routeName: (context) => AddFleetingNoteScreen(),
         LogoutScreen.routeName: (context) => LogoutScreen(),
       },
-      debugShowCheckedModeBanner: true,
     );
   }
 }

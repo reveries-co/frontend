@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.reveries_app">
    <application
-        android:label="reveries_app"
-        android:icon="@mipmap/rev_launcher">
+        android:label="Reveries"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

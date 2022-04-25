@@ -51,9 +51,8 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
           // everything is set up let's generate a UUID for this fleeting note
           var uuid = Uuid();
           String uid = uuid.v1();
-          DatabaseReference database = FirebaseDatabase.instance.ref(
-              "fleeting/$uid"
-          );
+          DatabaseReference database =
+              FirebaseDatabase.instance.ref("fleeting/$uid");
 
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
@@ -61,44 +60,60 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
               body: Center(
                 child: FormBuilder(
                   key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      FormBuilderTextField(
-                        name: 'title',
-                        decoration: new InputDecoration.collapsed(
-                            hintText: 'Title...'
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 30.0),
+                    child: Column(
+                      children: [
+                        FormBuilderTextField(
+                            name: 'title',
+                            decoration: new InputDecoration.collapsed(
+                                hintText: 'Title...'),
+                            validator: FormBuilderValidators.compose(
+                                [FormBuilderValidators.required(context)])),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.08),
+                                  offset: const Offset(
+                                    0.0,
+                                    4.0,
+                                  ),
+                                  blurRadius: 16.0,
+                                  spreadRadius: 5.0,
+                                ),
+                              ]),
+                          padding: EdgeInsets.all(10.0),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 30.0, horizontal: 25.0),
+                          child: FormBuilderTextField(
+                            name: 'body',
+                            decoration: new InputDecoration.collapsed(
+                                hintText:
+                                    'What made this Reverie interesting?'),
+                            validator: FormBuilderValidators.compose(
+                                [FormBuilderValidators.required(context)]),
+                          ),
                         ),
-                        validator: FormBuilderValidators.compose(
-                            [FormBuilderValidators.required(context)]
-                        )
-                      ),
-                      FormBuilderTextField(
-                        name: 'body',
-                        decoration: new InputDecoration.collapsed(
-                            hintText: 'What made this Reverie interesting?'
+                        ElevatedButton(
+                          onPressed: () async {
+                            if (_formKey.currentState!.saveAndValidate()) {
+                              await database.set({
+                                "title": _formKey.currentState!.value["title"],
+                                "body": _formKey.currentState!.value["body"],
+                                "user": user.uid
+                              });
+                            }
+                          },
+                          child: const Text('Save'),
                         ),
-                        validator: FormBuilderValidators.compose(
-                            [FormBuilderValidators.required(context)]
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          if (_formKey.currentState!.saveAndValidate()) {
-                            await database.set({
-                              "title": _formKey.currentState!.value["title"],
-                              "body": _formKey.currentState!.value["body"],
-                              "user": user.uid
-                            });
-                          }
-                        },
-                        child: const Text('Save'),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              bottomNavigationBar: ReveriesBottomTabs());
+              ));
         });
   }
 }
