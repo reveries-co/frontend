@@ -60,29 +60,15 @@ class _DemoScreenState extends State<DemoScreen> {
                       fontSize: 40.0,
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.08),
-                            offset: const Offset(
-                              0.0,
-                              4.0,
-                            ),
-                            blurRadius: 16.0,
-                            spreadRadius: 5.0,
-                          ),
-                        ]),
-                    padding: EdgeInsets.all(10.0),
-                    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 25.0),
-                    child: NoteCard(title: "#14 Liquity Modernity", body: 'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',),
-                  ),
+                  NoteCard(
+                    title: "#14 Liquity Modernity",
+                    body: 'Very interesting way of describing how people my age see their vision of the world, and how future societies, but you won\'t be an innovator. ',
+                  )
                 ],
               ),
               bottomNavigationBar: ReveriesBottomTabs());
-        });
+        }
+    );
   }
 
   @override

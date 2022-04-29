@@ -65,7 +65,7 @@ class _ListFleetingNotesScreenState extends State<ListFleetingNotesScreen> {
                   itemCount: this._notes.length,
                   itemBuilder: (BuildContext context, int index) {
                     FleetingNote note = this._notes[index];
-                    return NoteCard(title: note.title, body: note.body);
+                    return NoteCard(title: note.title, body: note.body, created_at: note.created_at,);
                   }
               ),
               bottomNavigationBar: ReveriesBottomTabs());
