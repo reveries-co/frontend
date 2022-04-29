@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reveries_app/screens/add_fleeting_note.dart';
-import 'package:reveries_app/screens/demo.dart';
+import 'package:reveries_app/screens/list_fleeting_notes.dart';
 
 import '../blocs/auth_block.dart';
 import '../screens/logout.dart';
@@ -42,7 +41,7 @@ class ReveriesAppBar {
       title: Center(
         child: InkWell(
           onTap: () {
-            Navigator.of(context).pushNamed(DemoScreen.routeName);
+            Navigator.of(context).pushNamed(ListFleetingNotesScreen.routeName);
           },
           child: Image(
             image: AssetImage('img/mesh_logo_nobg.png'),

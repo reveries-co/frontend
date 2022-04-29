@@ -3,12 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 import 'package:reveries_app/widgets/reveries_app_bar.dart';
-
+import 'package:uuid/uuid.dart';
 import '../blocs/auth_block.dart';
 import 'login.dart';
 
@@ -51,8 +50,7 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
           var uuid = Uuid();
           String uid = uuid.v1();
           DatabaseReference database =
-              FirebaseDatabase.instance.ref("fleeting/$uid");
-
+              FirebaseDatabase.instance.ref("${user.uid}/fleeting/$uid");
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
               appBar: ReveriesAppBar.getReveriesAppBar(context, user),
