@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:reveries_app/widgets/reveries_app_bar.dart';
 import 'package:uuid/uuid.dart';
 import '../blocs/auth_block.dart';
+import 'list_fleeting_notes.dart';
 import 'login.dart';
 
 class AddFleetingNoteScreen extends StatefulWidget {
@@ -124,6 +125,7 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
                                     DateTime.now().millisecondsSinceEpoch,
                                 "user": user.uid
                               });
+                              Navigator.of(context).pushNamed(ListFleetingNotesScreen.routeName);
                             }
                           },
                           child: const Text('Save'),
