@@ -49,9 +49,9 @@ class _AddFleetingNoteScreenState extends State<AddFleetingNoteScreen> {
 
           // everything is set up let's generate a UUID for this fleeting note
           var uuid = Uuid();
-          String uid = uuid.v1();
+          String noteUid = uuid.v1();
           DatabaseReference database =
-              FirebaseDatabase.instance.ref("${user.uid}/fleeting/$uid");
+              FirebaseDatabase.instance.ref("fleeting/$noteUid");
           return Scaffold(
               backgroundColor: Color(0xFFf3f2fa),
               appBar: ReveriesAppBar.getReveriesAppBar(context, user),

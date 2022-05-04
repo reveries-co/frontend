@@ -42,8 +42,8 @@ class _ListFleetingNotesScreenState extends State<ListFleetingNotesScreen> {
     });
   }
 
-  _setupNotes(uuid) async {
-    List<FleetingNote> notes = await DatabaseService.getNotes(uuid);
+  _setupNotes(userUuid) async {
+    List<FleetingNote> notes = await DatabaseService.getNotes(userUuid);
     setState(() {
       this._notes = notes;
     });
